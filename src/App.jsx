@@ -7,6 +7,11 @@ function App() {
   let storeText = (e)=>{
     setText(e.target.value);
   }
+ 
+  let toCopy = () => {
+    copytoclick.current?.select();
+    window.navigator.clipboard.writeText(text);
+  };
 
   let toClear = () => {
     setText("")
@@ -15,9 +20,11 @@ function App() {
   return (
     <>
       <div className="container">
-        <textarea className='textarea' value={text} onChange={storeText}>
+        <textarea className='textarea' value={text} onChange={storeText} ref={copytoclick}> 
         </textarea>
         <p className='btn' onClick={toClear}>Clear</p>
+        <p className='btn2' onClick={toCopy}>Copy</p>
+        
       </div>
     </>
   )
